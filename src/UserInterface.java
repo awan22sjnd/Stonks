@@ -14,8 +14,8 @@ public class UserInterface {
         return ticker;
     }
 
-    public void displayData(Response res){
-        System.out.println(res);
+    public void displayBasicData(Response res){
+        System.out.println(res.getTicker()+" is "+res.getPrice());
     }
 
 }

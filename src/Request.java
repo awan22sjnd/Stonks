@@ -10,14 +10,26 @@ import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import java.io.IOException;
 
 public class Request {
+    private String URL;
+    private String KEY;
+
     private String ticker;
-    final String URL = "https://sandbox.tradier.com/v1/markets/quotes";
-    final String KEY = "Bearer 3CAzLDsTjs2M3pqMhv7INikBPJnp";
+    private String type;
+
     private ClassicHttpRequest crequest;
     private ClassicHttpResponse cresponse;
-    private Response res;
 
-    public Response getData() throws IOException, ParseException {
+    public Request(){
+        URL = "https://sandbox.tradier.com/v1/markets/quotes";
+        KEY = "Bearer 3CAzLDsTjs2M3pqMhv7INikBPJnp";
+    }
+
+    public Request(String URL, String KEY){
+        this.URL = URL;
+        this.KEY = KEY;
+    }
+
+    public Response getData() throws IOException, ParseException, org.json.simple.parser.ParseException {
         this.crequest = ClassicRequestBuilder
                 .get(URL)
                 .addHeader("Authorization", KEY)
@@ -32,5 +44,12 @@ public class Request {
 
     public void setTicker(String ticker){
         this.ticker = ticker;
+    }
+
+    public String validateStock() {
+        if(ticker.length()>5){
+
+        }
+        return "Valid";
     }
 }

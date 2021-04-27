@@ -25,7 +25,7 @@ public class Test {
                 .get("https://sandbox.tradier.com/v1/markets/quotes")
                 .addHeader("Authorization", "Bearer 3CAzLDsTjs2M3pqMhv7INikBPJnp")
                 .addHeader("Accept", "application/json")
-                .addParameter("symbols", "AAPL,VXX190517P00016000")
+                .addParameter("symbols", "AAPL")
                 .build();
         final ClassicHttpResponse response = HttpClientBuilder.create().build().execute(request);
         final String jsonString = EntityUtils.toString(response.getEntity());

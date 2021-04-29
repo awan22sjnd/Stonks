@@ -1,3 +1,5 @@
+package Main;
+
 import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
@@ -5,7 +7,8 @@ import java.io.IOException;
 public class Driver {
 
     public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException {
-	    UserInterface ui = new UserInterface();
+        Stonks stonk = new Stonks();
+	    UserInterface ui = stonk.returnUI();
 	    Request request = new Request();
 	    Response response = standard(ui,request);
 	    ui.displayBasicData(response);

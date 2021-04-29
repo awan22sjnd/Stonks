@@ -1,4 +1,4 @@
-// Version 1.8.0_31
+package Main;// Version 1.8.0_31
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +28,7 @@ import java.io.IOException;
 
 public class Test {
     public static void main(String[] args) throws IOException, ParseException {
-        //UserInterface ui = new UserInterface();
+        //Main.UserInterface ui = new Main.UserInterface();
         //ui.launch();
         //TestCode.Simple simple = new TestCode.Simple();
         //JFrame f = new JFrame();//creating instance of JFrame

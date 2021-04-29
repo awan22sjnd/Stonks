@@ -1,10 +1,9 @@
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+package Main;
+
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.ParseException;
-import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 
 import java.io.IOException;
@@ -42,8 +41,9 @@ public class Request {
         return data;
     }
 
-    public void setTicker(String ticker){
+    public Request setTicker(String ticker){
         this.ticker = ticker;
+        return this;
     }
 
     public String validateStock() {

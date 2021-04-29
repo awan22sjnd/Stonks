@@ -48,7 +48,7 @@ public class Request {
 
     public String validateStock() {
         if(ticker.length()>5){
-
+            return "Ticker Length";
         }
         return "Valid";
     }

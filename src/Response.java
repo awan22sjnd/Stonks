@@ -1,10 +1,9 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
-import org.json.simple.JSONArray;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
+import org.jfree.data.xy.XYDataset;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -15,11 +14,13 @@ public class Response {
     private JSONParser parser = new JSONParser();
 
     private JSONObject json;
-
+    private Map mmap;
+    private String[][] data;
 
     public Response(ClassicHttpResponse response) throws IOException, ParseException, org.json.simple.parser.ParseException {
         String jsonString = EntityUtils.toString(response.getEntity());
         this.json = (JSONObject) parser.parse(jsonString);
+        mmap = (Map) json.get("quotes");
     }
 
     public Response() {
@@ -30,15 +31,13 @@ public class Response {
     }
 
     public String getTicker(){
-        Map data = (Map) json.get("quotes");
-        Map quotes = (Map) data.get("quote");
+        Map quotes = (Map) mmap.get("quote");
 
         return quotes.get("symbol").toString();
     }
 
     public String getPrice(){
-        Map data = (Map) json.get("quotes");
-        Map quotes = (Map) data.get("quote");
+        Map quotes = (Map) mmap.get("quote");
 
         return quotes.get("last").toString();
     }
@@ -46,5 +45,11 @@ public class Response {
     @Override
     public String toString() {
         return json.toString();
+    }
+
+    public XYDataset createPriceDataset(){
+        TimeSeries series1 = new TimeSeries("Price");
+
+        return new TimeSeriesCollection(series1);
     }
 }

@@ -1,10 +1,13 @@
-# Main.Stonks
+# Stonks
  
-An application to graph stocks
+An application to graph stocks. 
 
 ## Changelog
 
-### v0.3.0 beta (2021-04-13)
+### v0.4.0 beta (2021-04-29)
+* Converted to Gradle Project
+
+### v0.3.0 beta (2021-04-29)
 * (Poorly) Created a GUI.
 
 ### v0.2.0 beta (2021-04-28)

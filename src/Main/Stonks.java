@@ -31,7 +31,7 @@ public class Stonks {
     }
 
     public void getData(String ticker) throws IOException, ParseException, org.json.simple.parser.ParseException {
-        response = request.setTicker(ticker).getData();
+        response = request.setTicker(ticker).setType("live").getData();
     }
 
     public String getTicker() {

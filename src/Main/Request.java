@@ -19,12 +19,10 @@ public class Request {
     private ClassicHttpResponse cresponse;
 
     public Request(){
-        URL = "https://sandbox.tradier.com/v1/markets/quotes";
         KEY = "Bearer 3CAzLDsTjs2M3pqMhv7INikBPJnp";
     }
 
-    public Request(String URL, String KEY){
-        this.URL = URL;
+    public Request(String KEY){
         this.KEY = KEY;
     }
 
@@ -43,6 +41,18 @@ public class Request {
 
     public Request setTicker(String ticker){
         this.ticker = ticker;
+        return this;
+    }
+
+    public Request setType(String type){
+        switch (type){
+            case "live":
+                URL = "https://sandbox.tradier.com/v1/markets/quotes";
+                break;
+            case "history":
+                URL = "https://sandbox.tradier.com/v1/markets/history";
+                break;
+        }
         return this;
     }
 

@@ -32,7 +32,7 @@ public class Test {
         //ui.launch();
         //TestCode.Simple simple = new TestCode.Simple();
         //JFrame f = new JFrame();//creating instance of JFrame
-
+        test();
     }
 
     public static void test() throws IOException, ParseException {
@@ -40,7 +40,7 @@ public class Test {
                 .get("https://sandbox.tradier.com/v1/markets/quotes")
                 .addHeader("Authorization", "Bearer 3CAzLDsTjs2M3pqMhv7INikBPJnp")
                 .addHeader("Accept", "application/json")
-                .addParameter("symbols", "AAPL")
+                .addParameter("symbol", "AAPL")
                 .build();
         final ClassicHttpResponse response = HttpClientBuilder.create().build().execute(request);
         final String jsonString = EntityUtils.toString(response.getEntity());

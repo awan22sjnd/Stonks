@@ -64,7 +64,7 @@ public class MainWindow {
                 }
                 tickerLabel.setText(realtimeResponse.getTicker());
                 priceLabel.setText(realtimeResponse.getPrice());
-
+                GraphChartPanel.setChart(historicalResponse.createChart());
             }
         });
 
@@ -96,12 +96,17 @@ public class MainWindow {
     }
 
     private void createUIComponents() {
-        XYSeries series = new XYSeries("asdf");
-        for (int i = 0; i < 100; i++)
-            series.add(i, Math.random());
-        XYSeriesCollection dataset = new XYSeriesCollection(series);
-        JFreeChart chart = ChartFactory.createXYLineChart(null, null, null, dataset, PlotOrientation.HORIZONTAL, true, true, true);
-        this.GraphChartPanel = new ChartPanel(chart);
+        this.GraphChartPanel = new ChartPanel(new JFreeChart(new Plot() {
+            @Override
+            public String getPlotType() {
+                return null;
+            }
+
+            @Override
+            public void draw(Graphics2D g2, Rectangle2D area, Point2D anchor, PlotState parentState, PlotRenderingInfo info) {
+
+            }
+        }));
     }
 
     /**

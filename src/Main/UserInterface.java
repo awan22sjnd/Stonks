@@ -56,10 +56,6 @@ public class UserInterface {
         frame.repaint();
     }
 
-    public void displayChart(ChartPanel panel, JFreeChart chart) {
-        panel.setChart(chart);
-    }
-
     public RealtimeRequest getRealtimeRequest() {
         return realtimeRequest;
     }

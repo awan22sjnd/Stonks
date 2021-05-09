@@ -1,30 +1,51 @@
 package Windows;
 
+import Main.Requests.HistoricalRequest;
+import Main.Requests.RealtimeRequest;
 import Main.Stonks;
 import Main.UserInterface;
+import org.apache.hc.core5.http.ParseException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Login {
     public JPanel mainPanel;
     private JButton loginButton;
     private JTextField token;
     private JLabel loginLabel;
+    private RealtimeRequest realtimeRequest;
+    private HistoricalRequest historicalRequest;
+
+    public void setRealtimeRequest(RealtimeRequest realtimeRequest) {
+        this.realtimeRequest = realtimeRequest;
+    }
+
+    public void setHistoricalRequest(HistoricalRequest historicalRequest) {
+        this.historicalRequest = historicalRequest;
+    }
 
     public Login(UserInterface ui) {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(token.getText());
+                String KEY = "";
+                KEY = token.getText();
+                if (KEY.equals("")) {
+                    KEY = "Bearer 3CAzLDsTjs2M3pqMhv7INikBPJnp";
+                }
+                System.out.println(KEY);
+                ui.getRealtimeRequest().setKEY(KEY);
+                ui.getHistoricalRequest().setKEY(KEY);
                 ui.changePanel(ui.mainWindow.mainPanel);
             }
         });
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException {
         JFrame frame = new JFrame("Login");
         Stonks stonk = new Stonks();
         frame.setContentPane(new Login(stonk.returnUI()).mainPanel);

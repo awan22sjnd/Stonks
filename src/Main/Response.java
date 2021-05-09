@@ -32,13 +32,13 @@ public class Response {
         this.json = (JSONObject) parser.parse(jsonString);
     }
 
-    public String getTicker(){
+    public String getTicker() {
         Map quotes = (Map) mmap.get("quote");
 
         return quotes.get("symbol").toString();
     }
 
-    public String getPrice(){
+    public String getPrice() {
         Map quotes = (Map) mmap.get("quote");
 
         return quotes.get("last").toString();
@@ -49,7 +49,7 @@ public class Response {
         return json.toString();
     }
 
-    public XYDataset createPriceDataset(){
+    public XYDataset createPriceDataset() {
         TimeSeries series1 = new TimeSeries("Price");
 
         return new TimeSeriesCollection(series1);

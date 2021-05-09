@@ -4,6 +4,10 @@ An application to graph stocks.
 
 ## Changelog
 
+### v0.5.0 beta (2021-05-08)
+* Pain
+* Reformatted Structure (Not Well)
+
 ### v0.4.0 beta (2021-04-29)
 * Converted to Gradle Project
 

@@ -1,28 +1,47 @@
 package Main;
 
+import Main.Requests.HistoricalRequest;
+import Main.Requests.RealtimeRequest;
+import Main.Responses.HistoricalResponse;
+import Main.Responses.RealtimeResponse;
 import Windows.Login;
 import Windows.MainWindow;
+import org.apache.hc.core5.http.ParseException;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.xy.XYDataset;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Scanner;
+
 public class UserInterface {
 
     private Scanner reader;
     private JFrame frame;
     public Login login;
     public MainWindow mainWindow;
-    private Stonks wrapper;
+    private RealtimeRequest realtimeRequest;
+    private HistoricalRequest historicalRequest;
+    private RealtimeResponse realtimeResponse;
+    private HistoricalResponse historicalResponse;
 
 
-    public UserInterface(Stonks stonks){
-        wrapper = stonks;
+    public UserInterface() throws IOException, ParseException, org.json.simple.parser.ParseException {
         reader = new Scanner(System.in);
         login = new Login(this);
         mainWindow = new MainWindow(this);
     }
 
     public void launch() {
+        login.setHistoricalRequest(historicalRequest);
+        login.setRealtimeRequest(realtimeRequest);
+        mainWindow.setHistoricalRequest(historicalRequest);
+        mainWindow.setHistoricalResponse(historicalResponse);
+        mainWindow.setRealtimeRequest(realtimeRequest);
+        mainWindow.setRealtimeResponse(realtimeResponse);
         frame = new JFrame();//creating instance of JFrame
         frame.setContentPane(login.mainPanel); //set the pane to login panel
         frame.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
@@ -31,32 +50,45 @@ public class UserInterface {
         frame.setVisible(true);
     }
 
-    public void changePanel(JPanel panel){
+    public void changePanel(JPanel panel) {
         frame.setContentPane(panel);
         frame.revalidate();
         frame.repaint();
     }
 
-
-    public String input (){
-        System.out.println("Please input a valid stock ticker! If you would like to quit, type 'quit' to quit.");
-        String ticker = reader.nextLine();
-        return ticker;
+    public void displayChart(ChartPanel panel, JFreeChart chart) {
+        panel.setChart(chart);
     }
 
-    public void displayBasicData(Response res){
-        System.out.println(res.getTicker()+" is "+res.getPrice());
+    public RealtimeRequest getRealtimeRequest() {
+        return realtimeRequest;
     }
 
-    //TODO Implement error handling well
-    public String displayError(String msg){
-        if(msg!="valid") {
-            System.out.println("Unkown Failure Occured");
-        }
-        return "null";
+    public void setRealtimeRequest(RealtimeRequest realtimeRequest) {
+        this.realtimeRequest = realtimeRequest;
     }
 
-    public Stonks getWrapper() {
-        return wrapper;
+    public HistoricalRequest getHistoricalRequest() {
+        return historicalRequest;
+    }
+
+    public void setHistoricalRequest(HistoricalRequest historicalRequest) {
+        this.historicalRequest = historicalRequest;
+    }
+
+    public RealtimeResponse getRealtimeResponse() {
+        return realtimeResponse;
+    }
+
+    public void setRealtimeResponse(RealtimeResponse realtimeResponse) {
+        this.realtimeResponse = realtimeResponse;
+    }
+
+    public HistoricalResponse getHistoricalResponse() {
+        return historicalResponse;
+    }
+
+    public void setHistoricalResponse(HistoricalResponse historicalResponse) {
+        this.historicalResponse = historicalResponse;
     }
 }

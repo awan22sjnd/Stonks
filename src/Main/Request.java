@@ -18,11 +18,11 @@ public class Request {
     private ClassicHttpRequest crequest;
     private ClassicHttpResponse cresponse;
 
-    public Request(){
+    public Request() {
         KEY = "Bearer 3CAzLDsTjs2M3pqMhv7INikBPJnp";
     }
 
-    public Request(String KEY){
+    public Request(String KEY) {
         this.KEY = KEY;
     }
 
@@ -39,13 +39,13 @@ public class Request {
         return data;
     }
 
-    public Request setTicker(String ticker){
+    public Request setTicker(String ticker) {
         this.ticker = ticker;
         return this;
     }
 
-    public Request setType(String type){
-        switch (type){
+    public Request setType(String type) {
+        switch (type) {
             case "live":
                 URL = "https://sandbox.tradier.com/v1/markets/quotes";
                 break;
@@ -57,7 +57,7 @@ public class Request {
     }
 
     public String validateStock() {
-        if(ticker.length()>5){
+        if (ticker.length() > 5) {
             return "Ticker Length";
         }
         return "Valid";

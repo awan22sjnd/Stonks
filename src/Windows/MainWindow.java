@@ -64,7 +64,7 @@ public class MainWindow {
                 }
                 tickerLabel.setText(realtimeResponse.getTicker());
                 priceLabel.setText(realtimeResponse.getPrice());
-                GraphChartPanel.setChart(historicalResponse.createChart());
+                GraphChartPanel.setChart(historicalResponse.createChart(tickerField.getText()));
             }
         });
 

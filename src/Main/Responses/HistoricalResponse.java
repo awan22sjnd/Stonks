@@ -45,7 +45,7 @@ public class HistoricalResponse {
 
     }
 
-    public JFreeChart createChart() {
+    public JFreeChart createChart(String title) {
         TimeSeries series = new TimeSeries("Price");
         String[] data;
         for (int x = 0; x < dayArray.size(); x++) {
@@ -54,7 +54,6 @@ public class HistoricalResponse {
             series.add(new Day(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0])), (double) map.get("close"));
         }
         XYDataset priceData = new TimeSeriesCollection(series);
-        String title = "Yeet";
         JFreeChart chart = ChartFactory.createTimeSeriesChart(
                 title,
                 "Date",

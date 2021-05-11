@@ -29,7 +29,8 @@ public class UserInterface {
     private HistoricalResponse historicalResponse;
 
 
-    public UserInterface() throws IOException, ParseException, org.json.simple.parser.ParseException {
+    public UserInterface() throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         reader = new Scanner(System.in);
         login = new Login(this);
         mainWindow = new MainWindow(this);

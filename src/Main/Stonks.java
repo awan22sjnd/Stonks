@@ -6,6 +6,7 @@ import Main.Responses.HistoricalResponse;
 import Main.Responses.RealtimeResponse;
 import org.apache.hc.core5.http.ParseException;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class Stonks {
@@ -16,13 +17,13 @@ public class Stonks {
     private HistoricalRequest historicalRequest;
     private HistoricalResponse historicalResponse;
 
-    public static void main(String args[]) throws IOException, ParseException, org.json.simple.parser.ParseException {
+    public static void main(String args[]) throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         Stonks app = new Stonks();
         app.run();
     }
 
 
-    public Stonks() throws IOException, ParseException, org.json.simple.parser.ParseException {
+    public Stonks() throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         ui = new UserInterface();
         realtimeRequest = new RealtimeRequest();
         realtimeResponse = new RealtimeResponse();

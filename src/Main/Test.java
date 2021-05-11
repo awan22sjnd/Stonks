@@ -4,7 +4,16 @@ import Main.Requests.HistoricalRequest;
 import Main.Requests.RealtimeRequest;
 import Main.Responses.HistoricalResponse;
 import Main.Responses.RealtimeResponse;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.hc.client5.http.classic.methods.HttpUriRequest;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.core5.http.ClassicHttpRequest;
+import org.apache.hc.core5.http.ClassicHttpResponse;
+import org.apache.hc.core5.http.HttpResponse;
 import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.jfree.data.time.Day;
 import org.json.simple.JSONArray;
 
@@ -19,7 +28,24 @@ public class Test {
         //ui.launch();
         //TestCode.Simple simple = new TestCode.Simple();
         //JFrame f = new JFrame();//creating instance of JFrame
-        test();
+        //test();
+        optionTest();
+    }
+
+    public static void optionTest() throws IOException, ParseException {
+        final ClassicHttpRequest request = ClassicRequestBuilder
+                .get("https://sandbox.tradier.com/v1/markets/options/chains")
+                .addHeader("Authorization", KEY)
+                .addHeader("Accept", "application/json")
+                .addParameter("symbol", "AMD")
+                .addParameter("expiration", "2021-05-21")
+                .addParameter("greeks", "true")
+                .build();
+        final ClassicHttpResponse response = HttpClientBuilder.create().build().execute(request);
+        final String jsonString = EntityUtils.toString(response.getEntity());
+        final JsonNode json = new ObjectMapper().readTree(jsonString);
+        System.out.println(json);
+
     }
 
     public static void test() throws IOException, ParseException, org.json.simple.parser.ParseException {

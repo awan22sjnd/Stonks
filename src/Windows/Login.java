@@ -46,7 +46,7 @@ public class Login {
         });
     }
 
-    public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException {
+    public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         JFrame frame = new JFrame("Login");
         Stonks stonk = new Stonks();
         frame.setContentPane(new Login(stonk.returnUI()).mainPanel);

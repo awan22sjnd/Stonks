@@ -85,7 +85,7 @@ public class MainWindow {
         this.historicalResponse = historicalResponse;
     }
 
-    public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException {
+    public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         JFrame frame = new JFrame("MainWindow");
         Stonks stonk = new Stonks();
         frame.setContentPane(stonk.returnUI().mainWindow.mainPanel);

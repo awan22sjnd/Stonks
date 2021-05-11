@@ -6,7 +6,6 @@ import Main.Responses.HistoricalResponse;
 import Main.Responses.RealtimeResponse;
 import Main.Stonks;
 import Main.UserInterface;
-import TestCode.PriceVolumeDemo1;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import org.apache.hc.core5.http.ParseException;

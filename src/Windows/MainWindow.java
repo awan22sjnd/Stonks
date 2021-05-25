@@ -1,5 +1,6 @@
 package Windows;
 
+import Main.Requests.BaseRequest;
 import Main.Requests.HistoricalRequest;
 import Main.Requests.RealtimeRequest;
 import Main.Responses.HistoricalResponse;
@@ -54,9 +55,8 @@ public class MainWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    realtimeRequest.setTicker(tickerField.getText());
+                    BaseRequest.setTicker(tickerField.getText());
                     realtimeResponse = realtimeRequest.getData();
-                    historicalRequest.setTicker(tickerField.getText());
                     historicalResponse = historicalRequest.getData();
                 } catch (IOException | org.json.simple.parser.ParseException | ParseException ioException) {
                     ioException.printStackTrace();

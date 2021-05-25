@@ -1,5 +1,6 @@
 package Windows;
 
+import Main.Requests.BaseRequest;
 import Main.Requests.HistoricalRequest;
 import Main.Requests.RealtimeRequest;
 import Main.Stonks;
@@ -39,8 +40,8 @@ public class Login {
                     KEY = "Bearer 3CAzLDsTjs2M3pqMhv7INikBPJnp";
                 }
                 System.out.println(KEY);
-                ui.getRealtimeRequest().setKEY(KEY);
-                ui.getHistoricalRequest().setKEY(KEY);
+                BaseRequest.setKEY(KEY);
+                BaseRequest.setKEY(KEY);
                 ui.changePanel(ui.mainWindow.mainPanel);
             }
         });

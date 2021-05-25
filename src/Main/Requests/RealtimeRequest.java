@@ -9,6 +9,11 @@ import java.io.IOException;
 
 public class RealtimeRequest extends BaseRequest {
 
+    public RealtimeResponse res;
+
+    public RealtimeRequest(){
+        res = new RealtimeResponse();
+    }
 
     public RealtimeResponse getData() throws IOException, ParseException, org.json.simple.parser.ParseException {
         this.crequest = ClassicRequestBuilder
@@ -19,8 +24,7 @@ public class RealtimeRequest extends BaseRequest {
                 .addParameter("greeks", "false")
                 .build();
         this.cresponse = HttpClientBuilder.create().build().execute(crequest);
-        RealtimeResponse data = new RealtimeResponse();
-        data.setResponse(cresponse);
-        return data;
+        res.setResponse(cresponse);
+        return res;
     }
 }

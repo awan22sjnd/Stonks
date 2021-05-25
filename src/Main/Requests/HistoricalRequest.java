@@ -9,6 +9,12 @@ import java.io.IOException;
 
 public class HistoricalRequest extends BaseRequest {
 
+    public HistoricalResponse res;
+
+    public HistoricalRequest(){
+        res = new HistoricalResponse();
+    }
+
     public HistoricalResponse getData() throws IOException, ParseException, org.json.simple.parser.ParseException {
         this.crequest = ClassicRequestBuilder
                 .get("https://sandbox.tradier.com/v1/markets/history")
@@ -17,8 +23,7 @@ public class HistoricalRequest extends BaseRequest {
                 .addParameter("symbol", ticker)
                 .build();
         this.cresponse = HttpClientBuilder.create().build().execute(crequest);
-        HistoricalResponse data = new HistoricalResponse();
-        data.setResponse(cresponse);
-        return data;
+        res.setResponse(cresponse);
+        return res;
     }
 }

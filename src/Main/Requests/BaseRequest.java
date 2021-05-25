@@ -5,19 +5,19 @@ import org.apache.hc.core5.http.ClassicHttpResponse;
 
 public class BaseRequest {
 
-    public String KEY;
+    public static String KEY;
 
-    public String ticker;
+    public static String ticker;
 
     public ClassicHttpRequest crequest;
     public ClassicHttpResponse cresponse;
 
-    public void setKEY(String KEY) {
-        this.KEY = KEY;
+    public static void setKEY(String KEY) {
+        BaseRequest.KEY = KEY;
     }
 
-    public void setTicker(String ticker) {
-        this.ticker = ticker;
+    public static void setTicker(String ticker) {
+        BaseRequest.ticker = ticker;
     }
 
 

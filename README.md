@@ -4,6 +4,12 @@ An application to graph stocks.
 
 ## Changelog
 
+### v0.6.4.1 beta (2021-05-25)
+* Small performance optimization
+
+### v0.6.4 beta (2021-05-11)
+* Title of the chart now corresponds with the given ticker
+
 ### v0.6.0 beta (2021-05-08)
 * IT WORKS (GRAPH IMPLEMENTED)
 

@@ -1,8 +1,5 @@
 package Windows;
 
-import Main.Requests.BaseRequest;
-import Main.Requests.HistoricalRequest;
-import Main.Requests.RealtimeRequest;
 import Main.Requests.ResponseGenerator;
 import Main.Responses.HistoricalResponse;
 import Main.Responses.RealtimeResponse;
@@ -11,15 +8,11 @@ import Main.UserInterface;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import org.apache.hc.core5.http.ParseException;
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.Plot;
-import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.PlotRenderingInfo;
 import org.jfree.chart.plot.PlotState;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;

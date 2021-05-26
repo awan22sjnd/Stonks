@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Map;
 
 public class RealtimeResponse {
-    private JSONParser parser = new JSONParser();
+    private final JSONParser parser = new JSONParser();
     private JSONObject json;
     private Map map;
 

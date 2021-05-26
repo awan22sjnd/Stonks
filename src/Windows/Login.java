@@ -1,8 +1,6 @@
 package Windows;
 
-import Main.Requests.BaseRequest;
-import Main.Requests.HistoricalRequest;
-import Main.Requests.RealtimeRequest;
+
 import Main.Requests.ResponseGenerator;
 import Main.Stonks;
 import Main.UserInterface;
@@ -21,16 +19,7 @@ public class Login {
     private JButton loginButton;
     private JTextField token;
     private JLabel loginLabel;
-    private RealtimeRequest realtimeRequest;
-    private HistoricalRequest historicalRequest;
 
-    public void setRealtimeRequest(RealtimeRequest realtimeRequest) {
-        this.realtimeRequest = realtimeRequest;
-    }
-
-    public void setHistoricalRequest(HistoricalRequest historicalRequest) {
-        this.historicalRequest = historicalRequest;
-    }
 
     public Login(UserInterface ui, ResponseGenerator generator) {
         loginButton.addActionListener(new ActionListener() {

@@ -12,15 +12,15 @@ import java.io.IOException;
 
 public class Stonks {
 
-    private UserInterface ui;
-    private RealtimeRequest realtimeRequest;
-    private RealtimeResponse realtimeResponse;
-    private HistoricalRequest historicalRequest;
-    private HistoricalResponse historicalResponse;
+    private final UserInterface ui;
+    private final RealtimeRequest realtimeRequest;
+    private final RealtimeResponse realtimeResponse;
+    private final HistoricalRequest historicalRequest;
+    private final HistoricalResponse historicalResponse;
 
-    private ResponseGenerator generator;
+    private final ResponseGenerator generator;
 
-    public static void main(String args[]) throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         Stonks app = new Stonks();
         app.run();
     }

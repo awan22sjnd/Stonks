@@ -3,6 +3,7 @@ package Main.Requests;
 import Main.Responses.HistoricalResponse;
 import Main.Responses.RealtimeResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 
@@ -13,11 +14,6 @@ public class ResponseGenerator {
     public String KEY;
 
     public String ticker;
-
-    public RealtimeResponse generateRealtimeResponse(String x) throws IOException, ParseException, org.json.simple.parser.ParseException {
-
-        return new RealtimeResponse(x);
-    }
 
     public RealtimeResponse generateRealtimeResponse() throws IOException, ParseException, org.json.simple.parser.ParseException {
         return new RealtimeResponse(HttpClientBuilder.create().build().execute(ClassicRequestBuilder

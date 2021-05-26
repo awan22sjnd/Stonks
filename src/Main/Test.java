@@ -1,16 +1,15 @@
 package Main;// Version 1.8.0_31
 
+import Main.Requests.BaseRequest;
 import Main.Requests.HistoricalRequest;
 import Main.Requests.RealtimeRequest;
 import Main.Responses.HistoricalResponse;
 import Main.Responses.RealtimeResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.hc.client5.http.classic.methods.HttpUriRequest;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.ClassicHttpResponse;
-import org.apache.hc.core5.http.HttpResponse;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
@@ -50,16 +49,16 @@ public class Test {
 
     public static void test() throws IOException, ParseException, org.json.simple.parser.ParseException {
         RealtimeRequest ds = new RealtimeRequest();
-        ds.setKEY(KEY);
-        ds.setTicker("AMD");
+        BaseRequest.setKEY(KEY);
+        BaseRequest.setTicker("AMD");
         RealtimeResponse response = ds.getData();
 
         System.out.println(response);
         System.out.println(response.getPrice());
         System.out.println(response.getTicker());
         HistoricalRequest ab = new HistoricalRequest();
-        ab.setKEY(KEY);
-        ab.setTicker("AMD");
+        BaseRequest.setKEY(KEY);
+        BaseRequest.setTicker("AMD");
         HistoricalResponse hresponse = ab.getData();
         System.out.println(hresponse);
         JSONArray array = hresponse.getArray();

@@ -8,10 +8,6 @@ import Main.Responses.RealtimeResponse;
 import Windows.Login;
 import Windows.MainWindow;
 import org.apache.hc.core5.http.ParseException;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.xy.XYDataset;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +16,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    private Scanner reader;
+    private final Scanner reader;
     private JFrame frame;
     public Login login;
     public MainWindow mainWindow;
@@ -28,7 +24,7 @@ public class UserInterface {
     private HistoricalRequest historicalRequest;
     private RealtimeResponse realtimeResponse;
     private HistoricalResponse historicalResponse;
-    private ResponseGenerator generator;
+    private final ResponseGenerator generator;
 
 
     public UserInterface(ResponseGenerator generator) throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -40,8 +36,6 @@ public class UserInterface {
     }
 
     public void launch() {
-        login.setHistoricalRequest(historicalRequest);
-        login.setRealtimeRequest(realtimeRequest);
         frame = new JFrame();//creating instance of JFrame
         frame.setContentPane(login.mainPanel); //set the pane to login panel
         frame.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());

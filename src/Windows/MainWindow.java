@@ -1,8 +1,6 @@
 package Windows;
 
-import Main.Requests.BaseRequest;
-import Main.Requests.HistoricalRequest;
-import Main.Requests.RealtimeRequest;
+import Main.Requests.ResponseGenerator;
 import Main.Responses.HistoricalResponse;
 import Main.Responses.RealtimeResponse;
 import Main.Stonks;
@@ -10,15 +8,11 @@ import Main.UserInterface;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import org.apache.hc.core5.http.ParseException;
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.Plot;
-import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.PlotRenderingInfo;
 import org.jfree.chart.plot.PlotState;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,22 +36,20 @@ public class MainWindow {
     private JLabel priceLabel;
     private ChartPanel GraphChartPanel;
     private JFreeChart chart;
-    private RealtimeRequest realtimeRequest;
     private RealtimeResponse realtimeResponse;
-    private HistoricalRequest historicalRequest;
     private HistoricalResponse historicalResponse;
     private UserInterface userInterface;
 
-    public MainWindow(UserInterface userInterface) throws IOException, ParseException, org.json.simple.parser.ParseException {
+    public MainWindow(UserInterface userInterface, ResponseGenerator generator) {
 
         $$$setupUI$$$();
         tickerSearchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    BaseRequest.setTicker(tickerField.getText());
-                    realtimeResponse = realtimeRequest.getData();
-                    historicalResponse = historicalRequest.getData();
+                    generator.setTicker(tickerField.getText());
+                    realtimeResponse = generator.generateRealtimeResponse();
+                    historicalResponse = generator.generateHistoricalResponse();
                 } catch (IOException | org.json.simple.parser.ParseException | ParseException ioException) {
                     ioException.printStackTrace();
                 }
@@ -67,22 +59,6 @@ public class MainWindow {
             }
         });
 
-    }
-
-    public void setRealtimeRequest(RealtimeRequest realtimeRequest) {
-        this.realtimeRequest = realtimeRequest;
-    }
-
-    public void setRealtimeResponse(RealtimeResponse realtimeResponse) {
-        this.realtimeResponse = realtimeResponse;
-    }
-
-    public void setHistoricalRequest(HistoricalRequest historicalRequest) {
-        this.historicalRequest = historicalRequest;
-    }
-
-    public void setHistoricalResponse(HistoricalResponse historicalResponse) {
-        this.historicalResponse = historicalResponse;
     }
 
     public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {

@@ -17,10 +17,25 @@ import java.io.IOException;
 import java.util.Map;
 
 public class HistoricalResponse {
-    private JSONParser parser = new JSONParser();
+    private final JSONParser parser = new JSONParser();
     private JSONObject json;
     private Map map;
     private JSONArray dayArray;
+
+    public HistoricalResponse(){
+
+    }
+
+    public HistoricalResponse(String jsonString) throws org.json.simple.parser.ParseException {
+        json = (JSONObject) parser.parse(jsonString);
+    }
+
+    public HistoricalResponse(ClassicHttpResponse response) throws IOException, ParseException, org.json.simple.parser.ParseException {
+        String jsonString = EntityUtils.toString(response.getEntity());
+        json = (JSONObject) parser.parse(jsonString);
+        map = (Map) json.get("history");
+        dayArray = (JSONArray) map.get("day");
+    }
 
     public void setResponse(ClassicHttpResponse response) throws IOException, ParseException, org.json.simple.parser.ParseException {
         String jsonString = EntityUtils.toString(response.getEntity());

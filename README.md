@@ -4,6 +4,10 @@ An application to graph stocks.
 
 ## Changelog
 
+### v0.7 beta (2021-05-26)
+* Refactor :)
+    * Made a request generator to consolidate creating request objects
+
 ### v0.6.4.1 beta (2021-05-25)
 * Small performance optimization
 

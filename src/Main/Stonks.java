@@ -13,10 +13,6 @@ import java.io.IOException;
 public class Stonks {
 
     private final UserInterface ui;
-    private final RealtimeRequest realtimeRequest;
-    private final RealtimeResponse realtimeResponse;
-    private final HistoricalRequest historicalRequest;
-    private final HistoricalResponse historicalResponse;
 
     private final ResponseGenerator generator;
 
@@ -29,17 +25,9 @@ public class Stonks {
     public Stonks() throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         generator = new ResponseGenerator();
         ui = new UserInterface(generator);
-        realtimeRequest = new RealtimeRequest();
-        realtimeResponse = new RealtimeResponse();
-        historicalRequest = new HistoricalRequest();
-        historicalResponse = new HistoricalResponse();
     }
 
     public void run() {
-        ui.setHistoricalRequest(historicalRequest);
-        ui.setHistoricalResponse(historicalResponse);
-        ui.setRealtimeRequest(realtimeRequest);
-        ui.setRealtimeResponse(realtimeResponse);
         ui.launch();
     }
 

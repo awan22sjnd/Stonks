@@ -31,7 +31,6 @@ public class Stonks {
         ui.launch();
     }
 
-
     public UserInterface returnUI() {
         return ui;
     }

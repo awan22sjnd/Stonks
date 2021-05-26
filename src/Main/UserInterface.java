@@ -12,25 +12,16 @@ import org.apache.hc.core5.http.ParseException;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class UserInterface {
 
-    private final Scanner reader;
     private JFrame frame;
     public Login login;
     public MainWindow mainWindow;
-    private RealtimeRequest realtimeRequest;
-    private HistoricalRequest historicalRequest;
-    private RealtimeResponse realtimeResponse;
-    private HistoricalResponse historicalResponse;
-    private final ResponseGenerator generator;
 
 
     public UserInterface(ResponseGenerator generator) throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        this.generator = generator;
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        reader = new Scanner(System.in);
         login = new Login(this,generator);
         mainWindow = new MainWindow(this,generator);
     }
@@ -48,37 +39,5 @@ public class UserInterface {
         frame.setContentPane(panel);
         frame.revalidate();
         frame.repaint();
-    }
-
-    public RealtimeRequest getRealtimeRequest() {
-        return realtimeRequest;
-    }
-
-    public void setRealtimeRequest(RealtimeRequest realtimeRequest) {
-        this.realtimeRequest = realtimeRequest;
-    }
-
-    public HistoricalRequest getHistoricalRequest() {
-        return historicalRequest;
-    }
-
-    public void setHistoricalRequest(HistoricalRequest historicalRequest) {
-        this.historicalRequest = historicalRequest;
-    }
-
-    public RealtimeResponse getRealtimeResponse() {
-        return realtimeResponse;
-    }
-
-    public void setRealtimeResponse(RealtimeResponse realtimeResponse) {
-        this.realtimeResponse = realtimeResponse;
-    }
-
-    public HistoricalResponse getHistoricalResponse() {
-        return historicalResponse;
-    }
-
-    public void setHistoricalResponse(HistoricalResponse historicalResponse) {
-        this.historicalResponse = historicalResponse;
     }
 }

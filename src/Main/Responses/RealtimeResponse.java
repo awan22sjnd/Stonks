@@ -14,6 +14,20 @@ public class RealtimeResponse {
     private JSONObject json;
     private Map map;
 
+    public RealtimeResponse(){
+
+    }
+
+    public RealtimeResponse(String jsonString) throws org.json.simple.parser.ParseException {
+        json = (JSONObject) parser.parse(jsonString);
+    }
+
+    public RealtimeResponse(ClassicHttpResponse response) throws IOException, ParseException, org.json.simple.parser.ParseException {
+        String jsonString = EntityUtils.toString(response.getEntity());
+        json = (JSONObject) parser.parse(jsonString);
+        map = (Map) json.get("quotes");
+        map = (Map) map.get("quote");
+    }
 
     public void setResponse(ClassicHttpResponse response) throws IOException, ParseException, org.json.simple.parser.ParseException {
         String jsonString = EntityUtils.toString(response.getEntity());

@@ -3,6 +3,7 @@ package Windows;
 import Main.Requests.BaseRequest;
 import Main.Requests.HistoricalRequest;
 import Main.Requests.RealtimeRequest;
+import Main.Requests.ResponseGenerator;
 import Main.Stonks;
 import Main.UserInterface;
 import com.intellij.uiDesigner.core.GridConstraints;
@@ -31,7 +32,7 @@ public class Login {
         this.historicalRequest = historicalRequest;
     }
 
-    public Login(UserInterface ui) {
+    public Login(UserInterface ui, ResponseGenerator generator) {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -40,8 +41,7 @@ public class Login {
                     KEY = "Bearer 3CAzLDsTjs2M3pqMhv7INikBPJnp";
                 }
                 System.out.println(KEY);
-                BaseRequest.setKEY(KEY);
-                BaseRequest.setKEY(KEY);
+                generator.setKEY(KEY);
                 ui.changePanel(ui.mainWindow.mainPanel);
             }
         });
@@ -50,7 +50,7 @@ public class Login {
     public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         JFrame frame = new JFrame("Login");
         Stonks stonk = new Stonks();
-        frame.setContentPane(new Login(stonk.returnUI()).mainPanel);
+        frame.setContentPane(new Login(stonk.returnUI(), stonk.getGenerator()).mainPanel);
         frame.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

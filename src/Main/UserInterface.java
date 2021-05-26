@@ -2,6 +2,7 @@ package Main;
 
 import Main.Requests.HistoricalRequest;
 import Main.Requests.RealtimeRequest;
+import Main.Requests.ResponseGenerator;
 import Main.Responses.HistoricalResponse;
 import Main.Responses.RealtimeResponse;
 import Windows.Login;
@@ -27,22 +28,20 @@ public class UserInterface {
     private HistoricalRequest historicalRequest;
     private RealtimeResponse realtimeResponse;
     private HistoricalResponse historicalResponse;
+    private ResponseGenerator generator;
 
 
-    public UserInterface() throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public UserInterface(ResponseGenerator generator) throws IOException, ParseException, org.json.simple.parser.ParseException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        this.generator = generator;
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         reader = new Scanner(System.in);
-        login = new Login(this);
-        mainWindow = new MainWindow(this);
+        login = new Login(this,generator);
+        mainWindow = new MainWindow(this,generator);
     }
 
     public void launch() {
         login.setHistoricalRequest(historicalRequest);
         login.setRealtimeRequest(realtimeRequest);
-        mainWindow.setHistoricalRequest(historicalRequest);
-        mainWindow.setHistoricalResponse(historicalResponse);
-        mainWindow.setRealtimeRequest(realtimeRequest);
-        mainWindow.setRealtimeResponse(realtimeResponse);
         frame = new JFrame();//creating instance of JFrame
         frame.setContentPane(login.mainPanel); //set the pane to login panel
         frame.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());

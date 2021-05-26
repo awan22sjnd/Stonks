@@ -22,6 +22,21 @@ public class HistoricalResponse {
     private Map map;
     private JSONArray dayArray;
 
+    public HistoricalResponse(){
+
+    }
+
+    public HistoricalResponse(String jsonString) throws org.json.simple.parser.ParseException {
+        json = (JSONObject) parser.parse(jsonString);
+    }
+
+    public HistoricalResponse(ClassicHttpResponse response) throws IOException, ParseException, org.json.simple.parser.ParseException {
+        String jsonString = EntityUtils.toString(response.getEntity());
+        json = (JSONObject) parser.parse(jsonString);
+        map = (Map) json.get("history");
+        dayArray = (JSONArray) map.get("day");
+    }
+
     public void setResponse(ClassicHttpResponse response) throws IOException, ParseException, org.json.simple.parser.ParseException {
         String jsonString = EntityUtils.toString(response.getEntity());
         this.json = (JSONObject) parser.parse(jsonString);

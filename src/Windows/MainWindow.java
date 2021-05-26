@@ -40,7 +40,7 @@ public class MainWindow {
     private HistoricalResponse historicalResponse;
     private UserInterface userInterface;
 
-    public MainWindow(UserInterface userInterface, ResponseGenerator generator) throws IOException, ParseException, org.json.simple.parser.ParseException {
+    public MainWindow(UserInterface userInterface, ResponseGenerator generator) {
 
         $$$setupUI$$$();
         tickerSearchButton.addActionListener(new ActionListener() {

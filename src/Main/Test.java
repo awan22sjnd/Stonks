@@ -22,7 +22,7 @@ import java.util.Map;
 public class Test {
     private static final String KEY = "Bearer 3CAzLDsTjs2M3pqMhv7INikBPJnp";
 
-    public static void main(String[] args) throws IOException, ParseException, org.json.simple.parser.ParseException {
+    public static void main(String[] args) throws IOException, ParseException {
         //Main.UserInterface ui = new Main.UserInterface();
         //ui.launch();
         //TestCode.Simple simple = new TestCode.Simple();

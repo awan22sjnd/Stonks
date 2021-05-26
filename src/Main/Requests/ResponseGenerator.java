@@ -3,7 +3,6 @@ package Main.Requests;
 import Main.Responses.HistoricalResponse;
 import Main.Responses.RealtimeResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
-import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 

@@ -1,10 +1,6 @@
 package Main;
 
-import Main.Requests.HistoricalRequest;
-import Main.Requests.RealtimeRequest;
 import Main.Requests.ResponseGenerator;
-import Main.Responses.HistoricalResponse;
-import Main.Responses.RealtimeResponse;
 import Windows.Login;
 import Windows.MainWindow;
 import org.apache.hc.core5.http.ParseException;
